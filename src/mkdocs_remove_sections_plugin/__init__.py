@@ -2,7 +2,7 @@
 import os
 import re
 # pip
-from mkdocs.config.config_options import Choice, Type, ListOfItems
+from mkdocs.config.config_options import Type
 from mkdocs.config.base import Config
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin, get_plugin_logger
@@ -22,9 +22,6 @@ class RemoveSectionsConfig(Config):
 
 class RemoveSectionsPlugin(BasePlugin[RemoveSectionsConfig]):
     def on_config(self, config: MkDocsConfig) -> None:
-        section_replace_pattern = self.config.section_start_pattern + ".*?" + self.config.section_end_pattern
-        self.section_replace_regex = re.compile(section_replace_pattern, re.DOTALL)
-
         self.start_tag = re.compile(self.config.section_start_pattern)
         self.end_tag = re.compile(self.config.section_end_pattern)
 
