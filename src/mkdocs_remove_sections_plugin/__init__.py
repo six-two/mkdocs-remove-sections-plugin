@@ -112,6 +112,9 @@ class RemoveSectionsPlugin(BasePlugin[RemoveSectionsConfig]):
             if remove_section_depth == DONT_REMOVE_CURRENT_LINES:
                 keep_lines.append(line)
 
+        # if the page ends and we are removing stuff, then we add the replacement text
+        if remove_section_depth != DONT_REMOVE_CURRENT_LINES:
+            keep_lines.append(self.config.section_replace_with)
         return "\n".join(keep_lines)
 
 

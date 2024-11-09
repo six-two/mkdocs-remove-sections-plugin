@@ -19,6 +19,9 @@ plugins:
 - remove_sections
 ```
 
+To remove a section and its subsections, you can begin its title with `Private:` like `## Private: My section`.
+
+If you need a more precise removal, you can also manually set start and end points for the removal.
 Any content on pages between `<!-- remove:start -->` and `<!-- remove:end -->` is replaced by the plugin with the text `Some content has been redacted in this version`.
 If there are uncertanities (start and end tags do not propperly match up), then this plugin will default to cutting too much rather than too little.
 In addition a warning is shown during the build.
@@ -65,3 +68,13 @@ By default a placeholder is shown, so that you see that something was removed.
 
 This controls, whether the patterns you defined with the other options should be case sensitive or insensitive.
 It defaults to case insensitive.
+
+## Notable changes
+
+### Version 0.1.0
+
+- Added removing sections by title
+
+### Version 0.0.1
+
+- Initial version
