@@ -3,6 +3,13 @@
 Remove marked sections from pages.
 For example to remove private information from a public version of a web site.
 
+## Installation
+
+You can install it with `pip`:
+```bash
+pip install mkdocs-remove-sections-plugin
+```
+
 ## Usage
 
 Add the plugin to your `mkdocs.yml`:
@@ -18,15 +25,17 @@ In addition a warning is shown during the build.
 
 ## Configuration
 
-You can configure the plugin with the following options:
+You can configure the plugin with the following options.
+The information shown below shows the default values:
 ```yaml
 plugins:
 - search
 - remove_sections:
     section_start_pattern: "<!--\\s*remove:start\\s*-->"
     section_end_pattern: "<!--\\s*remove:end\\s*-->"
-    # section_heading_pattern: "Private: "
+    section_heading_pattern: "^Private: "
     section_replace_with: "\n\n> Some content has been redacted in this version.\n\n"
+    regex_case_sensitive: false
 ```
 
 ### section_start_pattern
@@ -39,23 +48,11 @@ Regular expression pattern that marks the end of a section that should be remove
 
 ### section_heading_pattern
 
-**NOT IMPLEMENTED YET**: Regular expression for a section heading (`h1` through `h6`) that marks a section to be removed.
+Regular expression for a section heading (`h1` through `h6`) that marks a section to be removed.
 Any subsections are removed as well.
 You can use it like this:
 ```markdown
-Text to keep
-
 ## Private: Section to remove
-
-This will be removed, since the section title matches the regex.
-
-### Subsection
-
-This will be removed too, since it is a subsection.
-
-## Other section
-
-This will not be removed, since it is a section on the same level as the removed section (not a child).
 ```
 
 ### section_replace_with
@@ -63,3 +60,8 @@ This will not be removed, since it is a section on the same level as the removed
 The removed content will be replaced with this text.
 You can set an empty string to remove it entirely.
 By default a placeholder is shown, so that you see that something was removed.
+
+### regex_case_sensitive
+
+This controls, whether the patterns you defined with the other options should be case sensitive or insensitive.
+It defaults to case insensitive.
