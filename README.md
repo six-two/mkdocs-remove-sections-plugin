@@ -1,4 +1,8 @@
-# mkdocs-remove-sections-plugin
+# MkDocs Remove Sections Plugin
+
+[![PyPI version](https://img.shields.io/pypi/v/mkdocs-remove-sections-plugin)](https://pypi.org/project/mkdocs-remove-sections-plugin/)
+![License](https://img.shields.io/pypi/l/mkdocs-remove-sections-plugin)
+![Python versions](https://img.shields.io/pypi/pyversions/mkdocs-remove-sections-plugin)
 
 Remove marked sections from pages.
 For example to remove private information from a public version of a web site.

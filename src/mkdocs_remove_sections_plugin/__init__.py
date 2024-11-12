@@ -31,16 +31,10 @@ class RemoveSectionsPlugin(BasePlugin[RemoveSectionsConfig]):
     def on_page_markdown(self, markdown, page, config, files):
         try:
             markdown = self.strip_sections_marked_with_tags(markdown, page.file.src_uri)
-        except Exception as ex:
-            raise PluginError(f"Uncaught internal error: {ex}")
-    
-        try:
             markdown = self.strip_sections_with_marked_titles(markdown, page.file.src_uri)
+            return markdown
         except Exception as ex:
             raise PluginError(f"Uncaught internal error: {ex}")
-
-        return markdown
-
 
     def strip_sections_marked_with_tags(self, markdown: str, file_name: str) -> str:
         sections = self.start_tag.split(markdown)
